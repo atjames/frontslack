@@ -1,0 +1,24 @@
+{
+  "name": "my_package",
+  "version": "1.0.0",
+  "description": "nice",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.3.4",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "parcel-bundler": "^1.12.5"
+  }
+}
