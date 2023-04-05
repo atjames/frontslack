@@ -10,6 +10,7 @@ import {PluginLayout, Button, Input} from '@frontapp/ui-kit';
 
 */
 
+
 function Tutorial() {
 
   const context = useFrontContext();
@@ -122,7 +123,6 @@ return (
       <label htmlFor="input">Enter Slack Status Text:</label>
       <Input
         type="text"
-      
         value={slackStatus}
         onChange={handleStatusChange}
         placeholder="Enter Slack status here"
