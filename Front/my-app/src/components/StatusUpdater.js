@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import { useFrontContext } from '../providers/frontContext';
+import {PluginLayout, Button, Input} from '@frontapp/ui-kit';
 
 /* Things to fix:
 
@@ -20,7 +21,7 @@ function Tutorial() {
   const [emojiText,setEmojiText] = useState('');
   const [frontStatusCheck, setFrontStatusCheck] = useState(false);
   const frontuserID = context.teammate.id;
-  const webHookURL = "https://868e-68-36-121-182.ngrok.io" 
+  const webHookURL = "https://fa8c-68-36-121-182.ngrok.io" 
   const inputRef = useRef(null);
   //test
 
@@ -28,11 +29,11 @@ function Tutorial() {
     const timeout1 = setTimeout(() => {
       setDisabled1(false);
       setColor1('green');
-    }, 4000);
+    }, 2000);
     const timeout2 = setTimeout(() => {
       setDisabled2(false);
       setColor2('green');
-    }, 4000);
+    }, 2000);
 
     return () => {
       clearTimeout(timeout1);
@@ -72,12 +73,12 @@ function Tutorial() {
           
   };
 
-  const handleStatusChange = event => {
-    setSlackStatus(event.target.value);
+  const handleStatusChange = async (slackStatus) => {
+    setSlackStatus(slackStatus);
   };
 
-  const handleStatusChange2 = event => {
-    setEmojiText(event.target.value);
+  const handleStatusChange2 = async (emojiText) => {
+    setEmojiText(emojiText);
   };
 
   const handleCheckboxChange = event => {
@@ -117,10 +118,10 @@ function Tutorial() {
 
 };
 return (
-  <div className="button-container">
+  <PluginLayout>
     <div className="textinput">
       <label htmlFor="input">Enter Slack Status Text:</label>
-      <input
+      <Input
         type="text"
         value={slackStatus}
         onChange={handleStatusChange}
@@ -130,7 +131,7 @@ return (
       
       <div className="textinput">
       <label htmlFor="input">Enter Slack emoji Text:</label>
-      <input
+      <Input
         type="text"
         value={emojiText}
         onChange={handleStatusChange2}
@@ -150,26 +151,24 @@ return (
       />
       </div>
   
-      <button
-        style={{ backgroundColor: color1 }}
+      <Button
+        //style={{ backgroundColor: color1 }}
         onClick={handleClick}
         disabled={disabled1}
       >
         {disabled1 ? 'Updating Status...' : 'Send Status'}
-      </button>
+      </Button>
       <br />
-      <button
-        style={{ backgroundColor: color2 }}
+      <Button
+        //style={{ backgroundColor: color2 }}
         onClick={clearClick}
         disabled={disabled2}
       >
         {disabled2 ? 'Clearing Status...' : 'Clear Status'}
-      </button>
-
+      </Button>
     </div>
   </div>
-  </div>
-  
+  </PluginLayout>
 );
 }
 export default Tutorial;
