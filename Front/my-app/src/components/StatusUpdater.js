@@ -1,6 +1,14 @@
 import React, {useEffect, useState, useRef} from 'react';
 import { useFrontContext } from '../providers/frontContext';
 
+/* Things to fix:
+
+      -Add Emoji picker support
+      -Fix logic with clear status button
+      -Give option to set duration for Slack Status
+
+*/
+
 function Tutorial() {
 
   const context = useFrontContext();
