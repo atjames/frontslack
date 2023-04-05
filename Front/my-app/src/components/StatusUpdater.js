@@ -119,20 +119,19 @@ function Tutorial() {
 };
 return (
   <PluginLayout>
-    <div className="textinput">
       <label htmlFor="input">Enter Slack Status Text:</label>
       <Input
         type="text"
+      
         value={slackStatus}
         onChange={handleStatusChange}
         placeholder="Enter Slack status here"
         ref={inputRef}
       />
-      
-      <div className="textinput">
       <label htmlFor="input">Enter Slack emoji Text:</label>
       <Input
         type="text"
+        maxWidth="150"
         value={emojiText}
         onChange={handleStatusChange2}
         placeholder="Enter Emoji text here"
@@ -166,8 +165,6 @@ return (
       >
         {disabled2 ? 'Clearing Status...' : 'Clear Status'}
       </Button>
-    </div>
-  </div>
   </PluginLayout>
 );
 }
