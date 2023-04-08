@@ -4,7 +4,8 @@ import {PluginLayout, Button, Input} from '@frontapp/ui-kit';
 
 /* Things to fix:
 
-      -Add Emoji picker support
+      -Add Emoji picker support 
+      -Show slack status in Front
       -Fix logic with clear status button
       -Give option to set duration for Slack Status
 
