@@ -6,7 +6,11 @@ const cors = require('cors')
 
  // cool now everything is handled!
 
-const app = express().use(bodyParser.json());
+ const app = express();
+ 
+ app.use(cors());
+ 
+ app.use(bodyParser.json());
 //function to detect 
 /*function authKey(req,res,next){
     const api_token = req.headers['authorization'];
@@ -16,12 +20,35 @@ const app = express().use(bodyParser.json());
     }
     next();
 }*/
-app.use(cors())
+
 app.listen(3000,() => console.log('Is this thing on?'));
+
 
 app.get('/',(req,res) =>{
     res.status(200).send({ data: { message: 'This thing on?' } });
 });
+
+app.get('/current', (req, res) => {
+  const slackauthToken = process.env.SLACK_API_TOKEN; 
+  axios.get('https://slack.com/api/users.profile.get', {
+    headers: {
+      'Authorization': `Bearer ${slackauthToken}`
+    }
+  })
+  .then(response => {
+    const { status_text, status_emoji } = response.data.profile;
+    const statusObj = {
+      status_text: status_text,
+      status_emoji: status_emoji
+    }
+    res.status(200).json(statusObj);
+  })
+  .catch(error => {
+    console.error(error);
+    res.status(500).send('Something went wrong');
+  });
+});
+
 
 app.post('/slackStatus', async (req, res) => {
     const slack_status = req.body['slack_status'];

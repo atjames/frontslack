@@ -1,0 +1,13 @@
+.emoji-picker-container {
+    position: absolute;
+    margin-top: 50px;
+    scale:.8
+  }
+  
+  .emoji-picker-menu {
+    position: absolute;
+    bottom: 55px;
+    left: calc(50% - 150px);
+    top: calc(50% - 50px);
+   
+  }
