@@ -55,7 +55,7 @@ function Tutorial() {
       }
     };
   
-    // Fetch data initially and then fetch it every 3 seconds
+    // Fetch status initially and then every 3 seconds
     fetchData();
     const interval = setInterval(() => {
       fetchData();
@@ -118,7 +118,7 @@ function Tutorial() {
       return;
     }
         setDisabled2(true); 
-        //inputRef.current.value = '';
+       
         const response = await fetch(webHookURL+'/slackStatus', {
           method: 'POST',
           body: JSON.stringify({slack_status: "", emoji: ""}),
@@ -147,18 +147,18 @@ function Tutorial() {
 };
 
 return (
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
-  <h1 style={{ textAlign: 'center', fontSize: '20px', margin: '10px' }}>Current Slack Status:</h1>
-  <div style={{ display: 'flex', justifyContent: 'center', border: '3px solid black', borderRadius: '5px', minWidth: 'fit-content', width: '300px', margin: '0 auto' }}>
-    <h1 style={{ textAlign: 'center', fontSize: '20px', padding: '10px', margin: '0' }}>
+  <div class="status-container">
+  <h1 class="status-header">Current Slack Status:</h1>
+  <div class="status-wrapper">
+    <h1 class="status-text">
       {currentSlackStatus ? currentSlackStatus : 'No status is set in Slack...'}
     </h1>
-    <h1 style={{ textAlign: 'center', fontSize: '20px', padding: '10px', margin: '0' }}>
+    <h1 class="status-emoji">
       {currentEmoji ? emojiDictionary.getUnicode(currentEmoji) : null}
     </h1>
   </div>
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '300px', margin: '20px 0' }}>
-    <div style={{ padding: '10px', width: '100%' }}>
+  <div class="input-container">
+    <div class="input-field">
       <label htmlFor="input" style={{ marginBottom: '10px' }}>
         Enter Slack Status Text:
       </label>
@@ -171,48 +171,46 @@ return (
         style={{ marginBottom: '10px', width: '100%' }}
       />
     </div>
-    <div style={{ padding: '10px', width: '100%' }}>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', width: '100%' }}>
-        <label htmlFor="checkbox" style={{ marginRight: '10px' }}>
-          Set OOO in Front?
-        </label>
-        <input
-          type="checkbox"
-          id="checkbox"
-          checked={frontStatusCheck}
-          onChange={(event) => handleCheckboxChange(event.target.checked)}
-        />
+    <div class="checkbox-container">
+      <label htmlFor="checkbox" class="checkbox-label">
+        Set OOO in Front?
+      </label>
+      <input
+        type="checkbox"
+        id="checkbox"
+        checked={frontStatusCheck}
+        onChange={(event) => handleCheckboxChange(event.target.checked)}
+      />
+    </div>
+    <div class="emoji-container">
+      <div style={{ width: '40%', marginRight: '10px' }}>
+        <p>Selected Emoji: {nativeEmoji}</p>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', width: '100%' }}>
-  <div style={{ width: '40%', marginRight: '10px' }}>
-    <p>Selected Emoji: {nativeEmoji}</p>
-  </div>
-  <div style={{ width: '60%' }}>
-    <Button size="large" onClick={() => setPickerVisible(!isPickerVisible)} style={{ width: '100%' }}>
-      Select Emoji
-    </Button>
-    {isPickerVisible && (
-      <div className="emoji-picker-container">
-        <div className="emoji-picker-menu">
-          <Picker
-            data={data}
-            set="native"
-            previewPosition="none"
-            onEmojiSelect={handleEmojiSelect}
-          />
-        </div>
-      </div>
-    )}
-  </div>
-</div>
-      <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-        <Button size="large" onClick={handleClick} disabled={disabled1}>
-          {disabled1 ? 'Updating Status...' : 'Change Status'}
+      <div style={{ width: '60%' }}>
+        <Button size="large" onClick={() => setPickerVisible(!isPickerVisible)} style={{ width: '100%' }}>
+          Select Emoji
         </Button>
-        <Button size="large" onClick={clearClick} disabled={disabled2}>
-          {disabled2 ? 'Clearing Status...' : 'Clear Status'}
-        </Button>
+        {isPickerVisible && (
+          <div class="emoji-picker-container">
+            <div class="emoji-picker-menu">
+              <Picker
+                data={data}
+                set="native"
+                previewPosition="none"
+                onEmojiSelect={handleEmojiSelect}
+              />
+            </div>
+          </div>
+        )}
       </div>
+    </div>
+    <div class="button-container">
+      <Button size="large" onClick={handleClick} disabled={disabled1}>
+        {disabled1 ? 'Updating Status...' : 'Change Status'}
+      </Button>
+      <Button size="large" onClick={clearClick} disabled={disabled2}>
+        {disabled2 ? 'Clearing Status...' : 'Clear Status'}
+      </Button>
     </div>
   </div>
 </div>

@@ -1,7 +1,8 @@
 .emoji-picker-container {
     position: absolute;
     margin-top: 50px;
-    scale:.8
+    scale:.8;
+    z-index: 2;
   }
   
   .emoji-picker-menu {
@@ -9,5 +10,99 @@
     bottom: 55px;
     left: calc(50% - 150px);
     top: calc(50% - 50px);
-   
   }
+
+  .status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .status-header {
+    text-align: center;
+    font-size: 20px;
+    margin: 10px;
+  }
+  
+  .status-wrapper {
+    display: flex;
+    justify-content: center;
+    border: 3px solid black;
+    border-radius: 5px;
+    min-width: fit-content;
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  .status-text {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .status-emoji {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    margin: 20px 0;
+  }
+  
+  .input-field {
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .checkbox-label {
+    margin-right: 10px;
+  }
+  
+  .emoji-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .emoji-text {
+    width: 40%;
+    margin-right: 10px;
+  }
+  
+  .emoji-button {
+    width: 60%;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .status-button {
+    margin-right: 10px;
+  }
+  
+  .disabled-button {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
